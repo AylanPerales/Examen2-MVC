@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ page import="main.java.uia.com.contabilidad.ContabilidadUIA.*" %>
 <%@ page import="main.java.uia.com.presentacion.*" %>
-
+<%@ page import="java.util.ArrayList" %>
 
 
 
@@ -16,7 +16,8 @@
 <body>	
 
 <%
-
+	Object valueCliente = request.getAttribute("cliente");
+	Object listaCompras = request.getAttribute("listaCompras");
 %>
 	<jsp:useBean id='contabilidad' class='main.java.uia.com.contabilidad.ContabilidadUIA'/>
     

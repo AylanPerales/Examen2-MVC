@@ -1,28 +1,14 @@
 <%@ page language='java' contentType='text/html; charset=UTF-8'
 	pageEncoding='UTF-8'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
-<%@ page import="main.java.uia.com.contabilidad.ContabilidadUIA.*" %>
-<%@ page import="main.java.uia.com.presentacion.*" %>
-<%@ page import="java.util.ArrayList" %>
-
-
 
 <!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
 <html>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-<title>Cuentas</title>
+<title>Cheques</title>
 </head>
 <body>	
-
-<%
-    Object valueCliente = request.getAttribute("cliente");
-	Object listaCompras = request.getAttribute("listaCompras");
-%>
-	<jsp:useBean id='contabilidad' class='main.java.uia.com.contabilidad.ContabilidadUIA'/>
-    
-    <c:set var="message" value='${requestScope["cliente"]}' />
-    
     <table border=1>
         <thead>
             <tr>
@@ -34,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-        	<c:forEach var="cliente" items="${contabilidad.getListaProveedores()}">
+        	<c:forEach var="cliente" items="${clientes}">
                 <tr>
                     <td><c:out value="${cliente.name}" /></td>
                     <c:choose>
@@ -42,10 +28,10 @@
 	                    <td>                     
 		                    <table border=1>
 					        <tbody>
-							        	<c:forEach var="compra" items="${compras}">
+							        	<c:forEach var="cheques" items="${cheques}">
 						                <tr>
-						                    <td><c:out value="${compra.name}" /></td>
-						                    <td><c:out value="${compra.id}" /></td>
+						                    <td><c:out value="${cheques.name}" /></td>
+						                    <td><c:out value="${cheques.id}" /></td>
 						                </tr>
 						            	</c:forEach>
 		                    </tbody>
@@ -56,10 +42,10 @@
 		                    <c:when test="${cliente.name == clienteActual}">
 				                    <table border=1>
 							        <tbody>
-									        	<c:forEach var="cuenta" items="${cuentas}">
+									        	<c:forEach var="cheque" items="${cheque}">
 								                <tr>
-								                    <td><c:out value="${cuenta.name}" /></td>
-								                    <td><c:out value="${cuenta.id}" /></td>
+								                    <td><c:out value="${cheque.name}" /></td>
+								                    <td><c:out value="${cheque.id}" /></td>
 								                </tr>
 								            	</c:forEach>
 				                    </tbody>
@@ -67,21 +53,7 @@
 			            </td>                     
 	    				<td>Pendiente</a></td>
 	    				<td>Pendiente</a></td>
-	    				<td>
-	    				
-	    				
-	    				<table border="1">
-							<tr>
-							<td>id</td>
-							<td>Nombre</td>
-							</tr>
-							<tr>
-								                <tr>
-								                    <td><c:out value="${cliente.name}" /></td>
-								                    <td><c:out value="${cliente.id}" /></td>
-								                </tr>
-							</table>
-	    				</td>
+	    				<td>Pendiente</a></td>
 	    				</c:when>  
 		                    </c:choose>
 	    				</td>  
